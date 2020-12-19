@@ -11,21 +11,21 @@
     <title>add</title>
 </head>
 <body>
-    <form action="/add">
-        <input type="text" name="student_name">
+    <form action="/student-management" method="post">
+        姓名：<input type="text" name="student_name">
         <br>
-        <input type="radio" name="sex" value="0">女
+        性别：<input type="radio" name="sex" value="0">女
         <input type="radio" name="sex" value="1">男
         <br>
-        <input type="text" name="nation">
+        民族：<input type="text" name="nation">
         <br>
-        <input type="text" name="studentID">
+        学号：<input type="text" name="studentID">
         <br>
-        <input type="text" name="school">
+        学院：<input type="text" name="school">
         <br>
-        <input type="text" name="major">
+        专业：<input type="text" name="major">
         <br>
-        <input type="submit" value="添加">
+        <button type="submit" value="修改"></button>
     </form>
 </body>
 </html>

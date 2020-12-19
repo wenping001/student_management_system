@@ -1,54 +1,86 @@
-<%--
+<%@ page import="entity.User" %><%--
   Created by IntelliJ IDEA.
   User: 文平
-  Date: 2020/12/17
-  Time: 19:46
+  Date: 2020/12/19
+  Time: 18:21
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <html>
-  <head>
-    <title>学生信息管理系统</title>
-    <style type="text/css">
-      <%@include file="WEB-INF/css/bootstrap/3.3.6/bootstrap.css"%>
-      <%@include file="WEB-INF/css/bootstrap/3.3.6/bootstrap-theme.css"%>
-      <%@include file="WEB-INF/css/style.css"%>
-    </style>
-    <script src="WEB-INF/js/bootstrap/3.3.6/bootstrap.js"></script>
-  </head>
-  <body>
-      <h2>欢迎你${user}</h2>
-      <h1>学生管理系统</h1>
-      <table class="table-bordered">
-        <thead>
-          <th>序号</th>
-          <th>姓名</th>
-          <th>性别</th>
-          <th>民族</th>
-          <th>学号</th>
-          <th>学院</th>
-          <th>专业</th>
-          <th>操作</th>
-        </thead>
-      <tbody>
-        <c:forEach items="${students}" var="student" >
-          <tr>
-            <td class="id">${student.id}</td>
-            <td class="name">${student.name}</td>
-            <td class="sex">${student.sex}</td>
-            <td class="nation">${student.nation}</td>
-            <td class="studentID">${student.studentId}</td>
-            <td class="school" style="width: 200px">${student.school}</td>
-            <td class="major" style="width: 200px">${student.major}</td>
-            <td><a href=""><button class="btn btn-success">修改</button></a></td>
-            <td><a href=""><button class="btn btn-danger">删除</button></a></td>
-          </tr>
-        </c:forEach>
-      </tbody>
+<head>
+    <title>index</title>
 
-      </table>
-  </body>
+    <style type="text/css">
+        <%@include file="WEB-INF/template2/vendor/bootstrap/css/bootstrap.min.css"%>
+        <%@include file="WEB-INF/template2/fonts/font-awesome-4.7.0/css/font-awesome.min.css"%>
+        <%@include file="WEB-INF/template2/vendor/animate/animate.css"%>
+        <%@include file="WEB-INF/template2/vendor/select2/select2.min.css"%>
+        <%@include file="WEB-INF/template2/vendor/perfect-scrollbar/perfect-scrollbar.css"%>
+        <%@include file="WEB-INF/template2/css/util.css"%>
+        <%@include file="WEB-INF/template2/css/main.css"%>
+    </style>
+</head>
+<body>
+<%
+    User user = (User) session.getAttribute("user");
+    request.setAttribute("username",user.getName());
+    int i = 1;
+%>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100">
+                <table>
+                    <thead>
+                    <tr class="table100-head">
+                        <th class="column1" style="width: 10px">序号</th>
+                        <th class="column2">姓名</th>
+                        <th class="column3">性别</th>
+                        <th class="column4">民族</th>
+                        <th class="column5">学号</th>
+                        <th class="column6">学院</th>
+                        <th class="column6">专业</th>
+                        <th class="column6" colspan="2">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${students}" var="student" >
+                            <tr>
+                                <td class="id"><%=i++%></td>
+                                <td class="name">${student.name}</td>
+                                <td class="sex">${student.sex}</td>
+                                <td class="nation">${student.nation}</td>
+                                <td class="studentID">${student.studentId}</td>
+                                <td class="school" style="width: 200px">${student.school}</td>
+                                <td class="major" style="width: 200px">${student.major}</td>
+                                <td>
+                                    <a href="/student-management?method=update&id=${student.studentId}"><button class="btn-success">修改</button></a>
+                                </td>
+
+                                <td>
+                                    <a href="/student-management?method=delete&id=${student.studentId}"><button class="btn-danger">删除</button></a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--===============================================================================================-->
+<script src="WEB-INF/template2/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="WEB-INF/template2/vendor/bootstrap/js/popper.js"></script>
+<script src="WEB-INF/template2/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="WEB-INF/template2/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="WEB-INF/template2/js/main.js"></script>
+</body>
 </html>
