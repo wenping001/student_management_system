@@ -36,16 +36,21 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         User user = loginService.login(username, password);
         List<Student> studentList = studentService.studentList();
+        List<String> schools = studentService.schoolList();
+        List<String> majors = studentService.majorList();
+        List<String> nations = studentService.nationList();
         if (user!=null){
             HttpSession session = request.getSession();
             session.setAttribute("user",user);
             request.setAttribute("students",studentList);
+            request.setAttribute("schools",schools);
+            request.setAttribute("majors",majors);
+            request.setAttribute("nations",nations);
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
         else{
             response.sendRedirect("login.html");
         }
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

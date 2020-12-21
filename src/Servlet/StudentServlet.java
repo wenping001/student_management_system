@@ -2,6 +2,7 @@ package Servlet;
 
 import entity.Student;
 import Dao.impl.StudentDaoImpl;
+import entity.User;
 import service.StudentService;
 import service.impl.StudentServiceImpl;
 
@@ -19,7 +20,13 @@ public class StudentServlet extends HttpServlet {
     List<Student> students = new ArrayList<>();
     StudentService studentService = new StudentServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String school = request.getParameter("school");
+        String major = request.getParameter("major");
+        String studentID = request.getParameter("studentID");
 
+        studentService.update(studentID,name,school,major);
+        response.sendRedirect("/student-management");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +46,24 @@ public class StudentServlet extends HttpServlet {
                 studentService.delete(idStr);
                 response.sendRedirect("/student-management");
                 break;
+            case "add":
+                String name = request.getParameter("student_name");
+                String sex = request.getParameter("sex");
+                String nation = request.getParameter("nation");
+                String studentID = request.getParameter("studentID");
+                String school = request.getParameter("school");
+                String major = request.getParameter("major");
+                Student student = new Student(name,sex,nation,studentID,school,major);
+                studentService.addStudent(student);
+                response.sendRedirect("/student-management");
+            case "query":
+
+                break;
             case "update":
+                String id = request.getParameter("id");
+                Student student1 = studentService.getByStudentID(id);
+                request.setAttribute("student",student1);
+                request.getRequestDispatcher("update.jsp").forward(request,response);
                 break;
         }
     }

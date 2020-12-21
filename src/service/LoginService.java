@@ -4,4 +4,5 @@ import entity.User;
 
 public interface LoginService {
     public User login(String username,String password);
+    public User isValidEmail(String email);
 }

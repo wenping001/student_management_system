@@ -6,6 +6,7 @@
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jstl.jar!/" />
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/standard.jar!/" />
       <root url="file://$PROJECT_DIR$/web/WEB-INF/template2" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/javax.mail.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

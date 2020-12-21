@@ -11,6 +11,16 @@ public class Student {
     private String major;//专业
     private String studentId;
 
+    public Student(){};
+    public Student(String name, String sex, String nation,String studentId, String school, String major) {
+        this.name = name;
+        this.sex = sex;
+        this.nation = nation;
+        this.school = school;
+        this.major = major;
+        this.studentId = studentId;
+    }
+
     public String getSex() {
         return sex;
     }

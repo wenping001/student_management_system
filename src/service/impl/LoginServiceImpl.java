@@ -10,4 +10,9 @@ public class LoginServiceImpl implements LoginService {
     public User login(String username, String password) {
         return userDao.login(username, password);
     }
+
+    @Override
+    public User isValidEmail(String email) {
+        return userDao.isValidEmail(email);
+    }
 }
