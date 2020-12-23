@@ -22,5 +22,6 @@ public class ChangePasswordServlet extends HttpServlet {
         String user_email = request.getParameter("user-email");
         User user = loginService.isValidEmail(user_email);
         changePasswordService.changePassword(user,newPassword);
+        response.sendRedirect("back.jsp");
     }
 }
