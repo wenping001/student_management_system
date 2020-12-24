@@ -88,7 +88,7 @@
                     </td>
 
                     <td>
-                        <a href="/student-management?method=delete&id=${student.studentId}"><button class="btn-danger">删除</button></a>
+                        <a href="/student-management?method=delete&id=${student.studentId}"><button class="btn-success">删除</button></a>
                     </td>
                 </tr>
             </c:forEach>
